@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mongoid/observer/version'
+require 'mongoid/observers/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mongoid-observer"
-  spec.version       = Mongoid::Observer::VERSION
+  spec.name          = "mongoid-observers"
+  spec.version       = Mongoid::Observers::VERSION
   spec.authors       = ["Chamnap Chhorn"]
   spec.email         = ["chamnapchhorn@gmail.com"]
   spec.summary       = %q{Mongoid observer (removed in Mongoid 4.0)}
@@ -19,4 +19,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails-observers", "~> 0.1.2"
+  spec.add_dependency "mongoid", "~> 4.0.0.beta1"
 end
