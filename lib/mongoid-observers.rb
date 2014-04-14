@@ -1,7 +1,8 @@
 require "rails/observers/active_model"
+
 require "mongoid"
 require "mongoid/observers/config"
-require "mongoid/observers/composable"
+require "mongoid/observers/interceptable"
 require "mongoid/observers/railtie" if defined? Rails
 require "mongoid/observer"
 

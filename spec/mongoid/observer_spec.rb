@@ -201,7 +201,7 @@ describe Mongoid::Observer do
     end
   end
 
-  context "when custom callbacks are being fired", :pending do
+  context "when custom callbacks are being fired" do
 
     let!(:actor) do
       Actor.create!
@@ -273,7 +273,7 @@ describe Mongoid::Observer do
     end
   end
 
-  context "when using a custom callback", :pending do
+  context "when using a custom callback" do
 
     let(:actor) do
       Actor.new

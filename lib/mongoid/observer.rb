@@ -118,8 +118,6 @@ module Mongoid
     #   observer.add_observer!(Document)
     #
     # @param [ Class ] klass The child observer to add.
-    #
-    # @since 2.0.0.rc.8
     def add_observer!(klass)
       super and define_callbacks(klass)
     end
@@ -130,12 +128,10 @@ module Mongoid
     #   observer.define_callbacks(Document)
     #
     # @param [ Class ] klass The model to define them on.
-    #
-    # @since 2.0.0.rc.8
     def define_callbacks(klass)
       observer = self
       observer_name = observer.class.name.underscore.gsub('/', '__')
-      Mongoid::Interceptable::CALLBACKS.each do |callback|
+      Mongoid::Interceptable.observables.each do |callback|
         next unless respond_to?(callback)
         callback_meth = :"_notify_#{observer_name}_for_#{callback}"
         unless klass.respond_to?(callback_meth)
@@ -178,8 +174,6 @@ module Mongoid
       #   end
       #
       # @param [ Array<Symbol> ] models The names of the models.
-      #
-      # @since 3.0.15
       def observe(*models)
         models.flatten!
         models.collect! do |model|

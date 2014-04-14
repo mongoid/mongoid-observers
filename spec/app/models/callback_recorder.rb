@@ -14,7 +14,7 @@ class CallbackRecorder < Mongoid::Observer
     @last_record = {}
   end
 
-  Mongoid::Interceptable::CALLBACKS.each do |callback|
+  Mongoid::Interceptable.observables.each do |callback|
     define_method(callback) do |record, &block|
       @last_callback = callback
       @call_count[callback] += 1
