@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Chamnap Chhorn"]
   spec.email         = ["chamnapchhorn@gmail.com"]
   spec.summary       = %q{Mongoid observer (removed in Mongoid 4.0)}
-  spec.description   = %q{Mongoid::Observer removed from Mongoid.}
+  spec.description   = %q{Mongoid::Observer removed from Mongoid 4.0}
   spec.homepage      = "https://github.com/chamnap/mongoid-observer"
   spec.license       = "MIT"
 
