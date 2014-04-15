@@ -5,8 +5,8 @@ module Mongoid
     class Railtie < ::Rails::Railtie
       initializer "mongoid.observer" do |app|
         ActiveSupport.on_load(:mongoid) do
-          if observers = app.config.respond_to?(:mongoid) && app.config.mongoid.delete(:observers)
-            send :observers=, observers
+          if app.config.respond_to?(:mongoid)
+            Mongoid.observers = app.config.mongoid.observers
           end
         end
       end
