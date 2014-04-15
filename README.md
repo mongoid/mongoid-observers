@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/chamnap/mongoid-observers.svg?branch=master)](https://travis-ci.org/chamnap/mongoid-observers)[![Code Climate](https://codeclimate.com/github/chamnap/mongoid-observers.png)](https://codeclimate.com/github/chamnap/mongoid-observers)
+[![Build Status](https://travis-ci.org/chamnap/mongoid-observers.svg?branch=master)](https://travis-ci.org/chamnap/mongoid-observers)[![Code Climate](https://codeclimate.com/github/chamnap/mongoid-observers.png)](https://codeclimate.com/github/chamnap/mongoid-observers)[![Coverage Status](https://coveralls.io/repos/chamnap/mongoid-observers/badge.png?branch=master)](https://coveralls.io/r/chamnap/mongoid-observers?branch=master)
 # Mongoid::Observers
 
 Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't exist and I need to use it very often. Therefore, I extract the code from mongoid on my own.
