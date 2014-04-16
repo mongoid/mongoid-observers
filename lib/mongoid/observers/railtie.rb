@@ -6,7 +6,7 @@ module Mongoid
       initializer "mongoid.observer" do |app|
         ActiveSupport.on_load(:mongoid) do
           if app.config.respond_to?(:mongoid)
-            Mongoid.observers = app.config.mongoid.observers
+            ::Mongoid.observers = app.config.mongoid.observers
           end
         end
       end

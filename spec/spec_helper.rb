@@ -16,7 +16,9 @@ MODELS = File.join(File.dirname(__FILE__), "app/models")
 $LOAD_PATH.unshift(MODELS)
 
 require "pry"
+require "rails"
 require "mongoid-observers"
+require "ammeter/init"
 
 # mongoid connection
 Mongoid.load! File.dirname(__FILE__) + "/config/mongoid.yml", :test
