@@ -1,6 +1,6 @@
 test:
   sessions:
     default:
-      database: tenancy_mongoid_test
+      database: mongoid_observers_test
       hosts:
         - localhost:27017
