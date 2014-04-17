@@ -1,6 +1,6 @@
 # Mongoid::Observers [![Build Status](https://travis-ci.org/chamnap/mongoid-observers.svg?branch=master)](https://travis-ci.org/chamnap/mongoid-observers)[![Code Climate](https://codeclimate.com/github/chamnap/mongoid-observers.png)](https://codeclimate.com/github/chamnap/mongoid-observers)[![Coverage Status](https://coveralls.io/repos/chamnap/mongoid-observers/badge.png?branch=master)](https://coveralls.io/r/chamnap/mongoid-observers?branch=master)
 
-Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't exist and I need to use it very often. Therefore, I extract the code from mongoid on my own.
+Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't exist and I need to use it very often. Therefore, I extract the code from mongoid on my own. It's basically the same code from mongoid before it's removed.
 
 ## Installation
 
@@ -136,10 +136,6 @@ using observed models in the initialization, you can
 still load their observers by calling `ModelObserver.instance` before.
 Observers are singletons and that call instantiates and registers them.
 
-## Contributing
+## Authors
 
-1. Fork it ( http://github.com/<my-github-username>/mongoid-observers/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+* [Chamnap Chhorn](https://github.com/chamnap)
