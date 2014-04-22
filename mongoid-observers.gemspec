@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["chamnapchhorn@gmail.com"]
   spec.summary       = %q{Mongoid observer (removed in Mongoid 4.0)}
   spec.description   = %q{Mongoid::Observer removed from Mongoid 4.0}
-  spec.homepage      = "https://github.com/chamnap/mongoid-observer"
+  spec.homepage      = "https://github.com/chamnap/mongoid-observers"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails-observers", "~> 0.1.2"
-  spec.add_dependency "mongoid", "~> 4.0.0.beta1"
+  spec.add_dependency "mongoid", ">= 4.0.0.beta1"
 end
