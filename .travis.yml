@@ -4,8 +4,8 @@ script: "bundle exec rake spec"
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.0
-  - 2.1.1
+  - 2.1.5
+  - 2.2.0
 env:
   - CODECLIMATE_REPO_TOKEN=f506e465f1ed0571aeaa5e1cb9c14214c9f7567a92d1af70903f3d0bc8015ed6
 notifications:
