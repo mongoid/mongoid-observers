@@ -11,7 +11,7 @@ describe Mongoid::Observer do
   end
 
   it "is an instance of an active model observer" do
-    ActorObserver.instance.should be_a_kind_of(ActiveModel::Observer)
+    expect(ActorObserver.instance).to be_a_kind_of(ActiveModel::Observer)
   end
 
   context "when the oberserver observes a different class" do
@@ -27,7 +27,7 @@ describe Mongoid::Observer do
     end
 
     it "returns the proper observed classes" do
-      BandObserver.observed_classes.should eq([ Record ])
+      expect(BandObserver.observed_classes).to eq([ Record ])
     end
   end
 
@@ -52,7 +52,7 @@ describe Mongoid::Observer do
       end
 
       it "contains the updated value in the observer" do
-        phone.number_in_observer.should eq("0152-2222-2222")
+        expect(phone.number_in_observer).to eq("0152-2222-2222")
       end
     end
   end
@@ -68,7 +68,7 @@ describe Mongoid::Observer do
     end
 
     it "observes descendent class" do
-      observer.last_after_create_record.try(:name).should eq(actress.name)
+      expect(observer.last_after_create_record.try(:name)).to eq(actress.name)
     end
   end
 
@@ -84,7 +84,7 @@ describe Mongoid::Observer do
 
     it "does not fire the observer" do
       Actor.observers.disable(:all) do
-        actor and observer.last_after_create_record.should_not eq(actor)
+        actor and expect(observer.last_after_create_record).not_to eq(actor)
       end
     end
   end
@@ -101,7 +101,7 @@ describe Mongoid::Observer do
 
     it "does not fire the observer" do
       Mongoid.observers.disable(:all) do
-        actor and observer.last_after_create_record.should_not eq(actor)
+        actor and expect(observer.last_after_create_record).not_to eq(actor)
       end
     end
   end
@@ -113,15 +113,15 @@ describe Mongoid::Observer do
     end
 
     it "observes after initialize" do
-      recorder.last_callback.should eq(:after_initialize)
+      expect(recorder.last_callback).to eq(:after_initialize)
     end
 
     it "calls after initialize once" do
-      recorder.call_count[:after_initialize].should eq(1)
+      expect(recorder.call_count[:after_initialize]).to eq(1)
     end
 
     it "contains the model of the callback" do
-      recorder.last_record[:after_initialize].should eq(actor)
+      expect(recorder.last_record[:after_initialize]).to eq(actor)
     end
   end
 
@@ -139,11 +139,11 @@ describe Mongoid::Observer do
       :around_save ].each do |callback|
 
       it "observes #{callback}" do
-        recorder.call_count[callback].should eq(1)
+        expect(recorder.call_count[callback]).to eq(1)
       end
 
       it "contains the model of the callback" do
-        recorder.last_record[callback].should eq(actor)
+        expect(recorder.last_record[callback]).to eq(actor)
       end
     end
   end
@@ -167,11 +167,11 @@ describe Mongoid::Observer do
       end
 
       it "observes #{callback}" do
-        recorder.call_count[callback].should eq(1)
+        expect(recorder.call_count[callback]).to eq(1)
       end
 
       it "contains the model of the callback" do
-        recorder.last_record[callback].should eq(actor)
+        expect(recorder.last_record[callback]).to eq(actor)
       end
     end
   end
@@ -192,11 +192,11 @@ describe Mongoid::Observer do
       end
 
       it "observes #{callback}" do
-        recorder.call_count[callback].should eq(1)
+        expect(recorder.call_count[callback]).to eq(1)
       end
 
       it "contains the model of the callback" do
-        recorder.last_record[callback].should eq(actor)
+        expect(recorder.last_record[callback]).to eq(actor)
       end
     end
   end
@@ -218,11 +218,11 @@ describe Mongoid::Observer do
       end
 
       it "observes #{callback}" do
-        recorder.call_count[callback].should eq(1)
+        expect(recorder.call_count[callback]).to eq(1)
       end
 
       it "contains the model of the callback" do
-        recorder.last_record[callback].should eq(actor)
+        expect(recorder.last_record[callback]).to eq(actor)
       end
     end
   end
@@ -241,11 +241,11 @@ describe Mongoid::Observer do
       end
 
       it "observes #{callback}" do
-        recorder.call_count[callback].should eq(1)
+        expect(recorder.call_count[callback]).to eq(1)
       end
 
       it "contains the model of the callback" do
-        recorder.last_record[callback].should eq(actor)
+        expect(recorder.last_record[callback]).to eq(actor)
       end
     end
   end
@@ -264,11 +264,11 @@ describe Mongoid::Observer do
       end
 
       it "observes #{callback}" do
-        recorder.call_count[callback].should eq(1)
+        expect(recorder.call_count[callback]).to eq(1)
       end
 
       it "contains the model of the callback" do
-        recorder.last_record[callback].should eq(actor)
+        expect(recorder.last_record[callback]).to eq(actor)
       end
     end
   end
@@ -284,7 +284,7 @@ describe Mongoid::Observer do
     end
 
     it "notifies the observers once" do
-      actor.after_custom_count.should eq(1)
+      expect(actor.after_custom_count).to eq(1)
     end
   end
 end
