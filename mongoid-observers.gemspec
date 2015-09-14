@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails-observers", "~> 0.1.2"
-  spec.add_dependency "mongoid", ">= 4.0.0"
+  spec.add_dependency "mongoid", ">= 5.0.0"
 end
