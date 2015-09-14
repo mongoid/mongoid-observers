@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'bundler',          '>= 1.7'
-gem 'rake',             '~> 10.2.2'
+gem 'rake',             '~> 10.4.2'
 gem 'rspec',            '~> 3.1.0'
-gem 'guard-rspec',      '~> 4.5.0'
+gem 'guard-rspec',      '~> 4.6.4'
 gem 'pry',              '~> 0.9.12.6'
-gem 'simplecov',        '~> 0.8.2'
-gem 'coveralls',        '~> 0.7.0', require: false
+gem 'simplecov',        '~> 0.10.0'
+gem 'coveralls',        '~> 0.8.2', require: false
 gem 'codeclimate-test-reporter'
 gem 'ammeter',          '~> 1.1.2'
 gem 'railties'

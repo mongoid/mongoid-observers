@@ -21,6 +21,8 @@ require "mongoid-observers"
 require "ammeter/init"
 
 # mongoid connection
+Mongoid.logger.level        = Logger::INFO
+Mongo::Logger.logger.level  = Logger::INFO
 Mongoid.load! File.dirname(__FILE__) + "/config/mongoid.yml", :test
 
 # Autoload every model for the test suite that sits in spec/app/models.
