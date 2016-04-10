@@ -16,14 +16,18 @@ MODELS = File.join(File.dirname(__FILE__), "app/models")
 $LOAD_PATH.unshift(MODELS)
 
 require "pry"
-require "rails"
+require "rails/all"
 require "mongoid-observers"
 require "ammeter/init"
 
 # mongoid connection
 Mongoid.logger.level        = Logger::INFO
-Mongo::Logger.logger.level  = Logger::INFO
-Mongoid.load! File.dirname(__FILE__) + "/config/mongoid.yml", :test
+
+if Mongoid::VERSION.start_with?('4.')
+  Mongoid.load! File.dirname(__FILE__) + "/config/mongoid_4.yml", :test
+elsif Mongoid::VERSION.start_with?('5.')
+  Mongoid.load! File.dirname(__FILE__) + "/config/mongoid_5.yml", :test
+end
 
 # Autoload every model for the test suite that sits in spec/app/models.
 Dir[ File.join(MODELS, "*.rb") ].sort.each do |file|
