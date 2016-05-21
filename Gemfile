@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'mongoid',          '~> 5.1.2'
+gem 'rails-observers',  github: 'rails/rails-observers'
 gem 'rake',             '~> 10.4.2'
 gem 'rspec',            '~> 3.1.0'
 gem 'guard-rspec',      '~> 4.6.4'
