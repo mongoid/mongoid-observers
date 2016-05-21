@@ -1,0 +1,17 @@
+source 'https://rubygems.org'
+
+gem 'actionpack',       '~> 5.0.0.rc1'
+gem 'mongoid',          github: 'mongodb/mongoid'
+gem 'rails-observers',  github: 'rails/rails-observers'
+gem 'rake',             '~> 10.4.2'
+gem 'rspec',            '~> 3.5.0.beta.2'
+gem 'rspec-core',       '~> 3.5.0.beta.3'
+gem 'rspec-rails',      '~> 3.5.0.beta.2'
+gem 'guard-rspec',      '~> 4.6.4'
+gem 'pry',              '~> 0.9.12.6'
+gem 'simplecov',        '~> 0.10.0'
+gem 'coveralls',        '~> 0.8.2', require: false
+gem 'codeclimate-test-reporter'
+gem 'railties',         '~> 5.0.0.rc1'
+
+gemspec :path => '../'
