@@ -17,7 +17,7 @@ module Mongoid
         ActiveSupport.on_load(:mongoid) do
           ::Mongoid::instantiate_observers
 
-          ActionDispatch::Reloader.to_prepare do
+          ActiveSupport::Reloader.to_prepare do
             ::Mongoid.instantiate_observers
           end
         end
