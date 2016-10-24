@@ -1,7 +1,7 @@
 services: mongodb
 language: ruby
 before_install: gem install bundler -v='1.11.2'
-script: "bundle exec rake spec"
+script: "bundle exec rake spec:all"
 rvm:
   - 2.3.1
 env:

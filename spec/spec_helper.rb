@@ -27,6 +27,8 @@ if Mongoid::VERSION.start_with?('4.')
   Mongoid.load! File.dirname(__FILE__) + "/config/mongoid_4.yml", :test
 elsif Mongoid::VERSION.start_with?('5.')
   Mongoid.load! File.dirname(__FILE__) + "/config/mongoid_5.yml", :test
+elsif Mongoid::VERSION.start_with?('6.')
+  Mongoid.load! File.dirname(__FILE__) + "/config/mongoid_6.yml", :test
 end
 
 # Autoload every model for the test suite that sits in spec/app/models.
