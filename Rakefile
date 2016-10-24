@@ -13,7 +13,7 @@ namespace :spec do
   %w(mongoid_4 mongoid_5 mongoid_6).each do |gemfile|
     desc "Run Tests against #{gemfile}"
     task gemfile do
-      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle --quiet"
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle install --quiet"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
     end
   end
@@ -21,7 +21,7 @@ namespace :spec do
   desc "Run Tests against rails versions"
   task :all do
     %w(mongoid_4 mongoid_5 mongoid_6).each do |gemfile|
-      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle --quiet"
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle install --quiet"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
     end
   end

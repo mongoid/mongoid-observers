@@ -4,17 +4,20 @@ Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't e
 
 ## Installation
 
-Add this line to your application's Gemfile:
+For Rails 5+, Add this line to your application's Gemfile:
 
-    gem 'mongoid-observers'
+    gem 'mongoid-observers', '~> 0.3.0'
+    gem 'rails-observers',  github: 'rails/rails-observers'
+
+**NOTE:** `mongoid-observers` depends on `rails-observers` mostly, but it is not yet ready for a new release on Rails 5 yet, https://github.com/rails/rails-observers/issues/53.
+
+For Rails 4 and below, Add this line to your application's Gemfile:
+
+    gem 'mongoid-observers', '~> 0.2.0'
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install mongoid-observers
 
 ## Usage
 

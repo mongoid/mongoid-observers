@@ -17,7 +17,9 @@ module Mongoid
         ActiveSupport.on_load(:mongoid) do
           ::Mongoid::instantiate_observers
 
-          ActionDispatch::Reloader.to_prepare do
+          # DEPRECATION WARNING: to_prepare on ActionDispatch::Reloader is deprecated and will be removed from Rails 5.1
+          constant = defined?(ActiveSupport::Reloader) ? ActiveSupport::Reloader : ActionDispatch::Reloader
+          constant.to_prepare do
             ::Mongoid.instantiate_observers
           end
         end
