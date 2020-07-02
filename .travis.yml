@@ -1,5 +1,6 @@
 services: mongodb
 language: ruby
+before_install: gem install bundler -v='1.11.2'
 script: "bundle exec rake spec:mongoid_6"
 rvm:
   - 2.3.0
