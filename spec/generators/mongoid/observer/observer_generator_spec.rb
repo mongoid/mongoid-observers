@@ -1,25 +1,26 @@
 require "spec_helper"
+require "tmpdir"
 
 # Generators are not automatically loaded by Rails
 require "generators/mongoid/observer/observer_generator"
 
 describe Mongoid::Generators::ObserverGenerator do
-  # Tell the generator where to put its output (what it thinks of as Rails.root)
-  destination File.expand_path("../../../../../spec/tmp", __FILE__)
-
-  before do
-    prepare_destination
+  around do |example|
+    Dir.mktmpdir("mongoid-observer-generator") do |destination|
+      @destination = destination
+      example.run
+    end
   end
 
   it "observer without namespace" do
-    run_generator %w(product)
-    expect(file("app/models/product_observer.rb")).to exist
-    expect(file("app/models/product_observer.rb")).to contain(/class ProductObserver < Mongoid::Observer/)
+    described_class.start(["product"], destination_root: @destination)
+    output = File.read(File.join(@destination, "app/models/product_observer.rb"))
+    expect(output).to include("class ProductObserver < Mongoid::Observer")
   end
 
   it "observer with namespace" do
-    run_generator %w(admin/account)
-    expect(file("app/models/admin/account_observer.rb")).to exist
-    expect(file("app/models/admin/account_observer.rb")).to contain(/class Admin::AccountObserver < Mongoid::Observer/)
+    described_class.start(["admin/account"], destination_root: @destination)
+    output = File.read(File.join(@destination, "app/models/admin/account_observer.rb"))
+    expect(output).to include("class Admin::AccountObserver < Mongoid::Observer")
   end
 end
