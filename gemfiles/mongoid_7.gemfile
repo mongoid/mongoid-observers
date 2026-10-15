@@ -1,0 +1,3 @@
+ENV['MONGOID_VERSION'] = '7'
+ENV['RAILS_VERSION'] = '6.1'
+eval_gemfile '../Gemfile'

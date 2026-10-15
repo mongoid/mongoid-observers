@@ -1,4 +1,7 @@
-# Mongoid::Observers [![Build Status](https://travis-ci.org/chamnap/mongoid-observers.svg?branch=master)](https://travis-ci.org/chamnap/mongoid-observers)[![Code Climate](https://codeclimate.com/github/chamnap/mongoid-observers.png)](https://codeclimate.com/github/chamnap/mongoid-observers)[![Coverage Status](https://coveralls.io/repos/chamnap/mongoid-observers/badge.png?branch=master)](https://coveralls.io/r/chamnap/mongoid-observers?branch=master)[![Dependency Status](https://gemnasium.com/chamnap/mongoid-observers.svg)](https://gemnasium.com/chamnap/mongoid-observers)
+# Mongoid::Observers
+
+[![Test](https://github.com/mongoid/mongoid-observers/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/mongoid/mongoid-observers/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/mongoid/mongoid-observers/badge.svg?branch=master)](https://coveralls.io/github/mongoid/mongoid-observers?branch=master)
 
 Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't exist and I need to use it very often. Therefore, I extract the code from mongoid on my own. It's basically the same code from mongoid before it's removed.
 
@@ -7,9 +10,6 @@ Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't e
 For Rails 5+, Add this line to your application's Gemfile:
 
     gem 'mongoid-observers', '~> 0.3.0'
-    gem 'rails-observers',  github: 'rails/rails-observers'
-
-**NOTE:** `mongoid-observers` depends on `rails-observers` mostly, but it is not yet ready for a new release on Rails 5 yet, https://github.com/rails/rails-observers/issues/53.
 
 For Rails 4 and below, Add this line to your application's Gemfile:
 
@@ -138,6 +138,12 @@ observed models can make use of extensions. If by any chance you are
 using observed models in the initialization, you can
 still load their observers by calling `ModelObserver.instance` before.
 Observers are singletons and that call instantiates and registers them.
+
+## Development
+
+Run `bundle install` and `bundle exec rake`. Set `MONGOID_VERSION` and `RAILS_VERSION` before bundling to select another dependency combination, or use the files under `gemfiles/` with `BUNDLE_GEMFILE`. Set `MONGODB_HOST` to override `localhost:27017`.
+
+Run `COVERAGE=true bundle install` followed by `COVERAGE=true bundle exec rake` to generate SimpleCov coverage in `coverage/`. GitHub Actions uploads the Ruby 4.0 job's report using the official Coveralls action.
 
 ## Authors
 

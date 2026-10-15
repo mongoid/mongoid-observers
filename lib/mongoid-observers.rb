@@ -1,3 +1,4 @@
+require "logger"
 require "active_support"
 require "rails/observers/active_model"
 
@@ -10,6 +11,6 @@ require "mongoid/observer"
 module Mongoid
   include ActiveModel::Observing
 
-  delegate(*ActiveModel::Observing::ClassMethods.public_instance_methods(false) <<
-    { to: Config })
+  singleton_class.delegate(*ActiveModel::Observing::ClassMethods.public_instance_methods(false),
+    to: "::Mongoid::Config")
 end

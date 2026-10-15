@@ -7,10 +7,10 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList["spec/**/*_spec.rb"]
 end
 
-task :default => "spec:all"
+task :default => :spec
 
 namespace :spec do
-  %w(mongoid_4 mongoid_5 mongoid_6).each do |gemfile|
+  %w(mongoid_4 mongoid_5 mongoid_6 mongoid_7 mongoid_8 mongoid_9).each do |gemfile|
     desc "Run Tests against #{gemfile}"
     task gemfile do
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle install --quiet"
@@ -18,9 +18,9 @@ namespace :spec do
     end
   end
 
-  desc "Run Tests against rails versions"
+  desc "Run Tests against Mongoid versions (requires compatible Ruby versions)"
   task :all do
-    %w(mongoid_4 mongoid_5 mongoid_6).each do |gemfile|
+    %w(mongoid_4 mongoid_5 mongoid_6 mongoid_7 mongoid_8 mongoid_9).each do |gemfile|
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle install --quiet"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
     end
