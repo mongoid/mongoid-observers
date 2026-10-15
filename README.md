@@ -145,6 +145,8 @@ Run `bundle install` and `bundle exec rake`. Set `MONGOID_VERSION` and `RAILS_VE
 
 Run `COVERAGE=true bundle install` followed by `COVERAGE=true bundle exec rake` to generate SimpleCov coverage in `coverage/`. GitHub Actions uploads the Ruby 4.0 job's report using the official Coveralls action.
 
+Record user-visible changes in [CHANGELOG.md](CHANGELOG.md) under the next release, with an issue or pull request link when available and an author link. Danger checks changelog formatting on pull requests.
+
 ## Authors
 
 * [Chamnap Chhorn](https://github.com/chamnap)
