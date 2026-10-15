@@ -1,10 +1,9 @@
-### 0.3.1 (Next)
+### 0.4.0 (2026/10/15)
 
 * [#9](https://github.com/mongoid/mongoid-observers/pull/9): Add historical release notes and enforce changelog formatting with Danger - [@dblock](https://github.com/dblock).
 * [#8](https://github.com/mongoid/mongoid-observers/pull/8): Fix observer delegation and global observer disabling on modern ActiveSupport, and explicitly load Logger - [@dblock](https://github.com/dblock).
 * [#8](https://github.com/mongoid/mongoid-observers/pull/8): Test Ruby 2.7 through 4.0, Mongoid 4 through 9, Rails 4.2 through 8.1, and MongoDB 4.4 through 9.0 with GitHub Actions - [@dblock](https://github.com/dblock).
 * [#8](https://github.com/mongoid/mongoid-observers/pull/8): Replace obsolete coverage integrations and badges with SimpleCov and the official Coveralls action, modernize generator specs, and restore the released rails-observers runtime dependency - [@dblock](https://github.com/dblock).
-* Your contribution here.
 
 ### 0.3.0 (2016/10/31)
 

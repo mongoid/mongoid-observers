@@ -9,7 +9,7 @@ Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't e
 
 For Rails 5+, Add this line to your application's Gemfile:
 
-    gem 'mongoid-observers', '~> 0.3.0'
+    gem 'mongoid-observers', '~> 0.4.0'
 
 For Rails 4 and below, Add this line to your application's Gemfile:
 
