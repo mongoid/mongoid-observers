@@ -1,3 +1,8 @@
+### 0.4.1 (Next)
+
+* Your contribution here.
+* [#11](https://github.com/mongoid/mongoid-observers/pull/11): Add Appraisal-managed Rails integration tests for observer initialization, persisted callbacks and model reloading - [@dblock](https://github.com/dblock).
+
 ### 0.4.0 (2026/10/15)
 
 * [#9](https://github.com/mongoid/mongoid-observers/pull/9): Add historical release notes and enforce changelog formatting with Danger - [@dblock](https://github.com/dblock).
