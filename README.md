@@ -141,7 +141,9 @@ Observers are singletons and that call instantiates and registers them.
 
 ## Development
 
-Run `bundle install` and `bundle exec rake`. Set `MONGOID_VERSION` and `RAILS_VERSION` before bundling to select another dependency combination, or use the files under `gemfiles/` with `BUNDLE_GEMFILE`. Set `MONGODB_HOST` to override `localhost:27017`.
+Run `bundle install`, then `bundle exec appraisal mongoid_9 bundle install` and `bundle exec appraisal mongoid_9 rake`. `Appraisals` defines supported Mongoid/Rails pairs; select another appraisal with a compatible Ruby, or use its generated Gemfile with `BUNDLE_GEMFILE`. Set `MONGODB_HOST` to override `localhost:27017`.
+
+The default task runs unit specs and a separate Rails integration suite. Run only the fixture application's tests with `bundle exec appraisal mongoid_9 rake integration`. These boot a real Rails application, persist observed records, and verify observer registration after Rails unloads and reloads the model classes.
 
 Run `COVERAGE=true bundle install` followed by `COVERAGE=true bundle exec rake` to generate SimpleCov coverage in `coverage/`. GitHub Actions uploads the Ruby 4.0 job's report using the official Coveralls action.
 
