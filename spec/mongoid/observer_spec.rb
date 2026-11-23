@@ -14,7 +14,7 @@ describe Mongoid::Observer do
     expect(ActorObserver.instance).to be_a_kind_of(ActiveModel::Observer)
   end
 
-  context "when the oberserver observes a different class" do
+  context "when the observer observes a different class" do
 
     before(:all) do
       class BandObserver < Mongoid::Observer
