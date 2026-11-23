@@ -11,7 +11,7 @@ module Mongoid
         end
       end
 
-      # Instantitate any registered observers after Rails initialization and
+      # Instantiate any registered observers after Rails initialization and
       # instantiate them after being reloaded in the development environment
       config.after_initialize do |app|
         ActiveSupport.on_load(:mongoid) do

@@ -2,6 +2,7 @@
 
 * Your contribution here.
 * [#11](https://github.com/mongoid/mongoid-observers/pull/11): Add Appraisal-managed Rails integration tests for observer initialization, persisted callbacks and model reloading - [@dblock](https://github.com/dblock).
+* [#12](https://github.com/mongoid/mongoid-observers/pull/12): Lint Markdown, YAML, and spelling with rubocop-md, rubocop-prose, rubocop-spellcheck, and rubocop-yaml in a separate Lint workflow, and clean up documentation - [@dblock](https://github.com/dblock).
 
 ### 0.4.0 (2026/10/15)
 

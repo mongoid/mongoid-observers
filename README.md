@@ -1,9 +1,8 @@
 # Mongoid::Observers
 
-[![Test](https://github.com/mongoid/mongoid-observers/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/mongoid/mongoid-observers/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/mongoid/mongoid-observers/badge.svg?branch=master)](https://coveralls.io/github/mongoid/mongoid-observers?branch=master)
+[![Test](https://github.com/mongoid/mongoid-observers/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/mongoid/mongoid-observers/actions/workflows/test.yml) [![Coverage Status](https://coveralls.io/repos/github/mongoid/mongoid-observers/badge.svg?branch=master)](https://coveralls.io/github/mongoid/mongoid-observers?branch=master)
 
-Mongoid Observers (removed from core in Mongoid 4.0). Because this gem doesn't exist and I need to use it very often. Therefore, I extract the code from mongoid on my own. It's basically the same code from mongoid before it's removed.
+Observers for Mongoid, which were removed from core in Mongoid 4.0. This gem extracts the original Mongoid observer code so that you can keep using it.
 
 ## Installation
 
@@ -21,74 +20,63 @@ And then execute:
 
 ## Usage
 
-Observer classes respond to life cycle callbacks to implement trigger-like
-behavior outside the original class. This is a great way to reduce the
-clutter that normally comes when the model class is burdened with
-functionality that doesn't pertain to the core responsibility of the
-class. Mongoid's observers work similar to ActiveRecord's. Example:
+Observer classes respond to life cycle callbacks to implement trigger-like behavior outside the original class. This is a great way to reduce the clutter that normally comes when the model class is burdened with functionality that doesn't pertain to the core responsibility of the class. Mongoid's observers work similar to ActiveRecord's. Example:
 
 ```ruby
-  class CommentObserver < Mongoid::Observer
-    def after_save(comment)
-      Notifications.comment(
-        "admin@do.com", "New comment was posted", comment
-      ).deliver
-    end
+class CommentObserver < Mongoid::Observer
+  def after_save(comment)
+    Notifications.comment(
+      'admin@do.com', 'New comment was posted', comment
+    ).deliver
   end
+end
 ```
 
 This Observer sends an email when a Comment#save is finished.
 
 ```ruby
-  class ContactObserver < Mongoid::Observer
-    def after_create(contact)
-      contact.logger.info('New contact added!')
-    end
-
-    def after_destroy(contact)
-      contact.logger.warn("Contact with an id of #{contact.id} was destroyed!")
-    end
+class ContactObserver < Mongoid::Observer
+  def after_create(contact)
+    contact.logger.info('New contact added!')
   end
+
+  def after_destroy(contact)
+    contact.logger.warn("Contact with an id of #{contact.id} was destroyed!")
+  end
+end
 ```
 
 This Observer uses logger to log when specific callbacks are triggered.
 
-#### Observing a class that can't be inferred
+### Observing a Class That Can't Be Inferred
 
-Observers will by default be mapped to the class with which they share a
-name. So CommentObserver will be tied to observing Comment,
-ProductManagerObserver to ProductManager, and so on. If you want to
-name your observer differently than the class you're interested in
-observing, you can use the Observer.observe class method which takes
-either the concrete class (Product) or a symbol for that class (:product):
+Observers will by default be mapped to the class with which they share a name. So CommentObserver will be tied to observing Comment, ProductManagerObserver to ProductManager, and so on. If you want to name your observer differently than the class you're interested in observing, you can use the Observer.observe class method which takes either the concrete class (Product) or a symbol for that class (:product):
 
 ```ruby
-  class AuditObserver < Mongoid::Observer
-    observe :account
+class AuditObserver < Mongoid::Observer
+  observe :account
 
-    def after_update(account)
-      AuditTrail.new(account, "UPDATED")
-    end
+  def after_update(account)
+    AuditTrail.new(account, 'UPDATED')
   end
+end
 ```
 
-If the audit observer needs to watch more than one kind of object,
-this can be specified with multiple arguments:
+If the audit observer needs to watch more than one kind of object, this can be specified with multiple arguments:
 
 ```ruby
-  class AuditObserver < Mongoid::Observer
-    observe :account, :balance
+class AuditObserver < Mongoid::Observer
+  observe :account, :balance
 
-    def after_update(record)
-      AuditTrail.new(record, "UPDATED")
-    end
+  def after_update(record)
+    AuditTrail.new(record, 'UPDATED')
   end
+end
 ```
 
-The AuditObserver will now act on both updates to Account and Balance
-by treating them both as records.
+The AuditObserver will now act on both updates to Account and Balance by treating them both as records.
 
-#### Available callback methods
+#### Available Callback Methods
 
 * after_initialize
 * before_validation
@@ -111,43 +99,27 @@ by treating them both as records.
 
 #### Storing Observers in Rails
 
-If you're using Mongoid within Rails, observer classes are usually stored
-in `app/models` with the naming convention of `app/models/audit_observer.rb`.
+If you're using Mongoid within Rails, observer classes are usually stored in `app/models` with the naming convention of `app/models/audit_observer.rb`.
 
 #### Configuration
 
-In order to activate an observer, list it in the `config.mongoid.observers`
-configuration setting in your `config/application.rb` file.
+In order to activate an observer, list it in the `config.mongoid.observers` configuration setting in your `config/application.rb` file.
 
 ```ruby
-  config.mongoid.observers = :comment_observer, :signup_observer
+config.mongoid.observers = :comment_observer, :signup_observer
 ```
 
-Observers will not be invoked unless you define them in your
-application configuration.
+Observers will not be invoked unless you define them in your application configuration.
 
 #### Loading
 
-Observers register themselves with the model class that they observe,
-since it is the class that notifies them of events when they occur.
-As a side-effect, when an observer is loaded, its corresponding model
-class is loaded.
+Observers register themselves with the model class that they observe, since it is the class that notifies them of events when they occur. As a side-effect, when an observer is loaded, its corresponding model class is loaded.
 
-Observers are loaded after the application initializers, so that
-observed models can make use of extensions. If by any chance you are
-using observed models in the initialization, you can
-still load their observers by calling `ModelObserver.instance` before.
-Observers are singletons and that call instantiates and registers them.
+Observers are loaded after the application initializers, so that observed models can make use of extensions. If by any chance you are using observed models in the initialization, you can still load their observers by calling `ModelObserver.instance` before. Observers are singletons and that call instantiates and registers them.
 
-## Development
+## Contributing
 
-Run `bundle install`, then `bundle exec appraisal mongoid_9 bundle install` and `bundle exec appraisal mongoid_9 rake`. `Appraisals` defines supported Mongoid/Rails pairs; select another appraisal with a compatible Ruby, or use its generated Gemfile with `BUNDLE_GEMFILE`. Set `MONGODB_HOST` to override `localhost:27017`.
-
-The default task runs unit specs and a separate Rails integration suite. Run only the fixture application's tests with `bundle exec appraisal mongoid_9 rake integration`. These boot a real Rails application, persist observed records, and verify observer registration after Rails unloads and reloads the model classes.
-
-Run `COVERAGE=true bundle install` followed by `COVERAGE=true bundle exec rake` to generate SimpleCov coverage in `coverage/`. GitHub Actions uploads the Ruby 4.0 job's report using the official Coveralls action.
-
-Record user-visible changes in [CHANGELOG.md](CHANGELOG.md) under the next release, with an issue or pull request link when available and an author link. Danger checks changelog formatting on pull requests.
+See [CONTRIBUTING.md](CONTRIBUTING.md), [CHANGELOG.md](CHANGELOG.md), and [RELEASING.md](RELEASING.md).
 
 ## Authors
 
