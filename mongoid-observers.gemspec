@@ -1,6 +1,6 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mongoid/observers/version'
+require_relative 'lib/mongoid/observers/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'mongoid-observers'
