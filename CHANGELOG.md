@@ -1,5 +1,6 @@
 ### 0.4.1 (Next)
 
+* [#16](https://github.com/mongoid/mongoid-observers/pull/16): Upgrade danger-pr-comment to 0.3.0 from the `danger` organization and skip empty Danger report comments - [@dblock](https://github.com/dblock).
 * Your contribution here.
 * [#11](https://github.com/mongoid/mongoid-observers/pull/11): Add Appraisal-managed Rails integration tests for observer initialization, persisted callbacks and model reloading - [@dblock](https://github.com/dblock).
 * [#12](https://github.com/mongoid/mongoid-observers/pull/12): Lint Markdown, YAML, and spelling with rubocop-md, rubocop-prose, rubocop-spellcheck, and rubocop-yaml in a separate Lint workflow, and clean up documentation - [@dblock](https://github.com/dblock).
